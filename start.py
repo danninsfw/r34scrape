@@ -51,7 +51,8 @@ print("starting scrape...")
 pagelinks = get_pagelinks(root)
 print("found " + str(len(pagelinks)) + " pages of content")
 for i, page_url in enumerate(pagelinks):
-    print("downloading page " + str(i+1) + " of " + str(len(pagelinks)))
-    page = BeautifulSoup(req.get(page_url).content, 'html.parser')
-    download_page(page)
-    print("finished page " + str(i+1) + " of " + str(len(pagelinks)))
+    if i+1 >= 8: 
+        print("downloading page " + str(i+1) + " of " + str(len(pagelinks)))
+        page = BeautifulSoup(req.get(page_url).content, 'html.parser')
+        download_page(page)
+        print("finished page " + str(i+1) + " of " + str(len(pagelinks)))
